@@ -100,7 +100,7 @@
                 <mxCell id="64" value="post_code（郵便番号）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
                     <mxGeometry y="30" width="290" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="65" value="prefecture_id（都道府県）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
+                <mxCell id="65" value="&lt;span style=&quot;&quot;&gt;region_of_origin_id&lt;/span&gt;（都道府県）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="63">
                     <mxGeometry y="60" width="290" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="66" value="Municupality（市区町村）" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="63">
