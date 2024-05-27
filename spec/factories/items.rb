@@ -3,7 +3,6 @@ FactoryBot.define do
     name { Faker::Name.initials(number: 2) }
     text { '日本人' }
     price { 1000 }
-    user_id { @user }
     genre_id { 1 }
     quality_id { 1 }
     payment_id { 1 }

@@ -61,12 +61,12 @@ RSpec.describe Item, type: :model do
       it 'priceが299以下では保存できないこと' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be greater than 300')
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが10000000以上では保存できないこと' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be less than 9999999')
+        expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
       it "genre_idの値が、id: 0,name:'--'の時は保存できないこと" do
         @item.genre_id = [0]
@@ -92,6 +92,11 @@ RSpec.describe Item, type: :model do
         @item.delivery_day_id = [0]
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery day is not a number')
+      end
+      it 'userが紐付いていなければ保存できないこと' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
