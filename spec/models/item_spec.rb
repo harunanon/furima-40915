@@ -28,31 +28,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
-      it 'genre_idが空では保存できないこと' do
-        @item.genre_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Genre can't be blank")
-      end
-      it 'quality_idが空では保存できないこと' do
-        @item.quality_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Quality can't be blank")
-      end
-      it 'payment_idが空では保存できないこと' do
-        @item.payment_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Payment can't be blank")
-      end
-      it 'region_of_origin_idが空では保存できないこと' do
-        @item.region_of_origin_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Region of origin can't be blank")
-      end
-      it 'delivery_day_idが空では保存できないこと' do
-        @item.delivery_day_id = nil
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery day can't be blank")
-      end
       it 'priceが空では保存できないこと' do
         @item.price = nil
         @item.valid?
@@ -97,6 +72,35 @@ RSpec.describe Item, type: :model do
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("User must exist")
+      end
+      it 'カテゴリーが「---」の場合は出品できないこと' do
+        @item.genre_id = 0 # ここで「---」のidを指定
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Genre must be other than 0")
+      end
+
+      it '商品の状態が「---」の場合は出品できないこと' do
+        @item.quality_id = 0 # ここで「---」のidを指定
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Quality must be other than 0")
+      end
+
+      it '配送料の負担が「---」の場合は出品できないこと' do
+        @item.payment_id = 0 # ここで「---」のidを指定
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Payment must be other than 0")
+      end
+
+      it '発送元の地域が「---」の場合は出品できないこと' do
+        @item.region_of_origin_id = 0 # ここで「---」のidを指定
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Region of origin must be other than 0")
+      end
+
+      it '発送までの日数が「---」の場合は出品できないこと' do
+        @item.delivery_day_id = 0 # ここで「---」のidを指定
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery day must be other than 0")
       end
     end
   end
