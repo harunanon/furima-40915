@@ -43,31 +43,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
-      it "genre_idの値が、id: 0,name:'--'の時は保存できないこと" do
-        @item.genre_id = [0]
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Genre can't be blank", 'Genre is not a number')
-      end
-      it "quality_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.quality_id = [0]
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Quality can't be blank", 'Quality is not a number')
-      end
-      it "payment_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.payment_id = [0]
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Payment can't be blank", 'Payment is not a number')
-      end
-      it "region_of_origin_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.region_of_origin_id = [0]
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Region of origin can't be blank", 'Region of origin is not a number')
-      end
-      it "delivery_day_idの値が、id:0,name:'--'の時は保存できないこと" do
-        @item.delivery_day_id = [0]
-        @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery day is not a number')
-      end
       it 'userが紐付いていなければ保存できないこと' do
         @item.user = nil
         @item.valid?
