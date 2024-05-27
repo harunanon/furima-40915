@@ -1,6 +1,6 @@
 class RegionOfOrigin < ActiveHash::Base
   include ActiveHash::Associations
-  has_many:item
+  has_many :item
 
   self.data = [
     { id: 0, name: '--' },

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    name { Faker::Name.initials(number:2) }
+    name { Faker::Name.initials(number: 2) }
     text { '日本人' }
     price { 1000 }
     user_id { @user }

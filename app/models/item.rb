@@ -9,7 +9,8 @@ class Item < ApplicationRecord
   belongs_to :region_of_origin
   belongs_to :delivery_day
 
-  validates :name, :image, :price, :text, :genre_id, :quality_id, :payment_id, :region_of_origin_id, :delivery_day_id, presence: true
+  validates :name, :image, :price, :text, :genre_id, :quality_id, :payment_id, :region_of_origin_id, :delivery_day_id,
+            presence: true
   validates :price, numericality: { less_than: 9_999_999, greater_than: 300 }
   validates :price, presence: true, numericality: { only_integer: true }
 
