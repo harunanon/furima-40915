@@ -46,36 +46,36 @@ RSpec.describe Item, type: :model do
       it 'userが紐付いていなければ保存できないこと' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
       it 'カテゴリーが「---」の場合は出品できないこと' do
         @item.genre_id = 0 # ここで「---」のidを指定
         @item.valid?
-        expect(@item.errors.full_messages).to include("Genre must be other than 0")
+        expect(@item.errors.full_messages).to include('Genre must be other than 0')
       end
 
       it '商品の状態が「---」の場合は出品できないこと' do
         @item.quality_id = 0 # ここで「---」のidを指定
         @item.valid?
-        expect(@item.errors.full_messages).to include("Quality must be other than 0")
+        expect(@item.errors.full_messages).to include('Quality must be other than 0')
       end
 
       it '配送料の負担が「---」の場合は出品できないこと' do
         @item.payment_id = 0 # ここで「---」のidを指定
         @item.valid?
-        expect(@item.errors.full_messages).to include("Payment must be other than 0")
+        expect(@item.errors.full_messages).to include('Payment must be other than 0')
       end
 
       it '発送元の地域が「---」の場合は出品できないこと' do
         @item.region_of_origin_id = 0 # ここで「---」のidを指定
         @item.valid?
-        expect(@item.errors.full_messages).to include("Region of origin must be other than 0")
+        expect(@item.errors.full_messages).to include('Region of origin must be other than 0')
       end
 
       it '発送までの日数が「---」の場合は出品できないこと' do
         @item.delivery_day_id = 0 # ここで「---」のidを指定
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery day must be other than 0")
+        expect(@item.errors.full_messages).to include('Delivery day must be other than 0')
       end
     end
   end
