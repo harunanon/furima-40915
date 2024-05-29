@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+  def show
+    @item = Item.find_by(id: params[:id])
+    unless @item
+      flash[:alert] = "商品が見つかりません"
+      redirect_to items_path
+    end
 
   def create
     @item = Item.new(item_params)
@@ -17,10 +23,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
-
   def item_params
     params.require(:item).permit(:name, :text, :price, :genre_id, :quality_id, :payment_id, :delivery_day_id,
                                  :region_of_origin_id, :image).merge(user_id: current_user.id)
   end
+end
 end
