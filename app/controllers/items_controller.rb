@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+  def show
+    @item = Item.find_by(id: params[:id])
+    end
 
   def create
     @item = Item.new(item_params)
@@ -16,8 +19,6 @@ class ItemsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-  private
 
   def item_params
     params.require(:item).permit(:name, :text, :price, :genre_id, :quality_id, :payment_id, :delivery_day_id,
