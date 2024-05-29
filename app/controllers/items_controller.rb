@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
     end
 
     def edit
-      @item = Item.find(params[:id])
     end
 
   def create
