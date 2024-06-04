@@ -4,7 +4,8 @@ RSpec.describe OrderAddress, type: :model do
   describe '商品購入機能' do
     before do
       item = FactoryBot.create(:item)
-      @order_address = FactoryBot.build(:order_address, user_id: item.user.id, item_id: item.id)
+      user = FactoryBot.create(:user)
+      @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
       sleep 0.1
     end
     context '商品購入がうまくいくとき' do
@@ -20,6 +21,10 @@ RSpec.describe OrderAddress, type: :model do
       end
       it 'phone_numberが11桁の数字なら登録できる' do
         @order_address.phone_number = '12345678901'
+        expect(@order_address).to be_valid
+      end
+      it '建物名が空でも保存できること' do
+        @order_address.building_name = ''
         expect(@order_address).to be_valid
       end
     end
@@ -95,6 +100,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid. Include 10-11 digits')
       end
+      it '電話番号が半角数値以外では保存できないこと' do
+        @order_address.phone_number = '０９０１２３４５６７８'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Include 10-11 digits")
     end
   end
+end
 end
