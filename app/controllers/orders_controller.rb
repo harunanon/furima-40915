@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @order_address = OrderAddress.new
-    if current_user == @item.user || @item.present?
+    if current_user == @item.user || @item.order.present?
       redirect_to root_path
     else
       @order_address = OrderAddress.new
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
       :municipality,
       :street_address,
       :building_name,
-      :phone_number,
+      :phone_number
     ).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 

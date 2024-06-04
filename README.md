@@ -36,7 +36,7 @@
 - has_one :history
 - has_one_attached :image (ActiveStorageで実装)
 
-## historiesテーブル（購入履歴機能）
+## ordersテーブル（購入履歴機能）
 
 | Column   | Type       | Options                       |
 | -------- | ---------- | ----------------------------- |
@@ -48,7 +48,7 @@
 - belongs_to :item
 - has_one :purchase
 
-## purchasesテーブル（商品購入機能）
+## addressesテーブル（商品購入機能）
 
 | Column               | Type       | Options                       |
 | -------------------- | ---------- | ----------------------------- |
@@ -58,7 +58,7 @@
 | street_address       | string     | null:false                    |
 | building_name        | string     |                               |
 | phone_number         | string     | null:false                    |
-| history              | references | null:false, foreign_key: true |
+| order                | references | null:false, foreign_key: true |
 
 ### Association
-- belongs_to :history
+- belongs_to :order
