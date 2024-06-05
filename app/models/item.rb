@@ -12,8 +12,11 @@ class Item < ApplicationRecord
 
   validates :name, :image, :price, :text, :genre_id, :quality_id, :payment_id, :region_of_origin_id, :delivery_day_id,
             presence: true
-  validates :price, numericality: { less_than: 10_000_000, greater_than_or_equal_to: 300 }
-  validates :price, presence: true, numericality: { only_integer: true }
+  validates :price, presence: true, numericality: { 
+              only_integer: true, 
+              greater_than_or_equal_to: 300, 
+              less_than: 10_000_000 
+            }
 
   with_options numericality: { other_than: 0 } do
     validates :genre_id
